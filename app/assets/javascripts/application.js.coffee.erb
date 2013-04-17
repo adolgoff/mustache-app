@@ -25,10 +25,10 @@ window.fbAsyncInit = ->
       $.get '/users/auth/facebook/', (json) ->
        console.log(json) 
       console.log "<%=Rails.application.routes.url_helpers.send(:user_omniauth_callback_path, :facebook)%>"
+    false
+      
       # console.log(response)
-      
       # $.getJSON "<%=Rails.application.routes.url_helpers.send(:user_omniauth_callback_path, :facebook)%>", (data) ->
-      
       # window.location = '/auth/facebook/callback.json' if response.authResponse
 
   $('#sign_out').click (e) ->
