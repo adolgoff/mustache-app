@@ -1,0 +1,33 @@
+
+$("#check").click (e) ->
+  e.preventDefault()
+  FB.getLoginStatus (response) ->
+    if response.status is "connected"
+      $.get "/users/auth/facebook",
+      signed_request: response.authResponse.signedRequest
+      , (json) ->
+        console.log json
+
+
+jQuery ->
+  $('body').prepend('<div id="fb-root"></div>')
+
+  $.ajax
+    url: "//connect.facebook.net/en_US/all.js"
+    dataType: 'script'
+    cache: true
+
+window.fbAsyncInit = ->
+  FB.init(appId: <%= ENV['FB_APP_ID'] %>, cookie: true)
+
+  $('#facebook-connect').click (e) ->
+    e.preventDefault()
+    FB.login (response) ->
+      $.get '<%=Rails.application.routes.url_helpers.send(:user_omniauth_callback_path, :facebook)%>', (json) ->
+       console.log(json) 
+    false
+
+  $('#sign_out').click (e) ->
+    FB.getLoginStatus (response) ->
+      FB.logout() if response.authResponse
+    true
