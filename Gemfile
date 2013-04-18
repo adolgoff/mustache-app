@@ -11,12 +11,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'bootstrap-sass', '~> 2.3.1'
 gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 2.3.1'
 gem "haml", "~> 4.0.2"
 gem 'haml-rails', "~> 0.4"
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
 gem 'omniauth-vkontakte'
