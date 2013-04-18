@@ -19,7 +19,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") Authproviders
+          %a.brand(href="#") RockyApp
           .container.nav-collapse
             %ul.nav
               - if user_signed_in?
@@ -37,9 +37,9 @@
               %h3 Providers
               %ul.nav.nav-list
                 - if !user_signed_in?
-                  %li= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :id=>"facebook-connect"
+                  %li= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :id=>"fb-connect"
+                  %li= link_to "Sign in with Vkontakte", user_omniauth_authorize_path(:vkontakte), :id=>"vk-connect"
                   %li= link_to "Check", user_omniauth_authorize_path(:vkontakte), :id=>"check"
-                  -# %li= link_to "Sign in with Vkontakte", user_omniauth_authorize_path(:vkontakte), :id=>"check"
     
       %footer
         %p &copy; Company 2012
@@ -47,5 +47,6 @@
       Javascripts
       \==================================================
     / Placed at the end of the document so the pages load faster
-    = javascript_include_tag "jquery", "jquery_ujs"
+    / = javascript_include_tag "jquery", "jquery_ujs"
     = javascript_include_tag "application"
+    = javascript_include_tag "http://vkontakte.ru/js/api/openapi.js?3"
