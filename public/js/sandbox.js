@@ -4,7 +4,9 @@ var Sandbox =  {
         return {
         	
             find : function (selector) {
-                return CONTAINER.query(selector);
+            	if (selector) return CONTAINER.query(selector);
+            	else return CONTAINER;
+                
             },
             
             

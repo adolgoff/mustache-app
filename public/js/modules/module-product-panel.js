@@ -7,6 +7,7 @@ Core.createModule("product-panel", function (sb) {
             fn(product);
         }
     }
+    
     function reset () {
         eachProduct(function (product) {
             product.style.opacity = '1';        
@@ -19,10 +20,11 @@ Core.createModule("product-panel", function (sb) {
             
             products = sb.find("li");
             sb.listen({
-                'change-filter' : this.change_filter,
+                'change-filter' : this.changeFilter,
                 'reset-filter'  : this.reset,
                 'perform-search': this.search,
-                'quit-search'   : this.reset
+                'quit-search'   : this.reset,
+                'creator-submit': this.createBookmark
             });
             eachProduct(function (product) {
                 sb.addEvent(product, 'click', that.addToCart);        
@@ -35,8 +37,10 @@ Core.createModule("product-panel", function (sb) {
             });
             sb.ignore(['change-filter', 'reset-filter', 'perform-search', 'quit-search']);
         },
+        
         reset : reset,
-        change_filter : function (filter) {
+        
+        changeFilter : function (filter) {
             reset();
             eachProduct(function (product) {
                 if (product.getAttribute("data-8088-keyword").toLowerCase().indexOf(filter.toLowerCase()) < 0) {
@@ -44,6 +48,11 @@ Core.createModule("product-panel", function (sb) {
                 }
             });
         },
+        
+        createBookmark : function(data){
+ 			console.log(data)       	
+        },
+
         search : function (query) {
             reset();
            query = query.toLowerCase();
@@ -53,6 +62,7 @@ Core.createModule("product-panel", function (sb) {
                 }
             });
         },
+        
         addToCart : function (e) {
             var li = e.currentTarget;
             sb.notify({

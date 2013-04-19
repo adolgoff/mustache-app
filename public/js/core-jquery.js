@@ -3,6 +3,7 @@
  * @email	a.n.dolgov@gmail.com
  * 
  * The Core object is the application Core, connected to jQuery and modules on the other side.
+ * 
  * It can: 
  *
  * 1. createModule (module ID : str, fn (sb))	// registers a module in the Core
@@ -19,15 +20,12 @@
 var Core = (function () {
     var modules = {},
     to_s = function (anything) { return Object.prototype.toString.call(anything); },
-    debug = true,
-    that = this;
-
+    debug = true;
+	var self;
     return {
         debug : function (on) {
             debug  = on ? true : false;
         },
-        
-        
         createModule : function (moduleID, creator) {
             var temp;
             if (typeof moduleID === 'string' && typeof creator === 'function') {
@@ -39,15 +37,38 @@ var Core = (function () {
                         instance : null
                     };
                 } else {
-                    this.log(1, "Module '" + moduleID + "' Registration : FAILED : instance has no init or destory functions");
+                    self.log(1, "Module '" + moduleID + "' Registration : FAILED : instance has no init or destory functions");
                 }
             } else {
-                this.log(1, "Module '" + moduleID + "' Registration : FAILED : one or more arguments are of incorrect type");
+                self.log(1, "Module '" + moduleID + "' Registration : FAILED : one or more arguments are of incorrect type");
             }
         },
         
         
-        start : function (moduleID) {
+        init : function () {
+            self = this;
+            var moduleID;
+            for (moduleID in modules) {
+	            self.log(1, moduleID);
+                if (modules.hasOwnProperty(moduleID)) {
+                    self.start(moduleID);
+                }
+            }
+            self.log(1, "Start all modules");
+        },
+        
+   
+        deinit : function () {
+            var moduleID;
+            for (moduleID in modules) {
+                if (modules.hasOwnProperty(moduleID)) {
+                    self.stop(moduleID);
+                }
+            }
+        },
+   
+   
+       start : function (moduleID) {
             var mod = modules[moduleID];
             if (mod) {
                 mod.instance = mod.create(Sandbox.create(this, moduleID));
@@ -55,50 +76,28 @@ var Core = (function () {
             }
         },
         
-        
-        startAll : function () {
-            var moduleID;
-            for (moduleID in modules) {
-	            this.log(1, moduleID);
-                if (modules.hasOwnProperty(moduleID)) {
-                    this.start(moduleID);
-                }
-            }
-            this.log(1, "Start all modules");
-        },
-        
-        
+             
         stop : function (moduleID) {
             var data;
             if (data = modules[moduleId] && data.instance) {
                 data.instance.destroy();
                 data.instance = null;
-                this.log(1, "Stop all modules");
+                self.log(1, "Stop all modules");
             } else {
-                this.log(1, "Stop Module '" + moduleID + "': FAILED : module does not exist or has not been started");
+                self.log(1, "Stop Module '" + moduleID + "': FAILED : module does not exist or has not been started");
             }
         },
         
-        
-        stopAll : function () {
-            var moduleID;
-            for (moduleID in modules) {
-                if (modules.hasOwnProperty(moduleID)) {
-                    this.stop(moduleID);
-                }
-            }
-        },
-        
-        
+             
         registerEvents : function (evts, mod) {
             if (this.is_obj(evts) && mod) {
                 if (modules[mod]) {
                     modules[mod].events = evts;
                 } else {
-                    this.log(1, "");
+                    self.log(1, "");
                 }
             } else {
-                this.log(1, "");
+                self.log(1, "");
             }
         },
         
@@ -117,7 +116,7 @@ var Core = (function () {
         
         
         removeEvents : function (evts, mod) {
-            if (this.is_obj(evts) && mod && (mod = modules[mod]) && mod.events) {
+            if (self.is_obj(evts) && mod && (mod = modules[mod]) && mod.events) {
                 delete mod.events;
             } 
         },
@@ -126,9 +125,7 @@ var Core = (function () {
         log : function (severity, message) {
             if (debug) {
                 console[ (severity === 1) ? 'log' : (severity === 2) ? 'warn' : 'error'](message);
-            } else {
-                // send to the server
-            }     
+            } 
         },
         
         dom : {
@@ -157,7 +154,7 @@ var Core = (function () {
                     }
                     jQuery(element).bind(evt, fn);
                 } else {
-                   this.log (1,"Wrong arguments");
+                   self.log (1,"Wrong arguments");
                 }
             },
             
@@ -169,7 +166,7 @@ var Core = (function () {
                     }
                     jQuery(element).unbind(evt, fn);
                 } else {
-                   this.log (1, "Wrong arguments");
+                   self.log (1, "Wrong arguments");
                 }
             },
             create: function (el) {

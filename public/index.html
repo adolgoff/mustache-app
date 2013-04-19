@@ -3,53 +3,74 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Online Store</title>
+    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="default.css" />
 </head>
 <body>
     <div id="main">
         <div id="search-box">
-        	<input id="search_input" type="text" name='q' />
-        	<button id="search_button">Search</button>
-        	<button id="quit_search">Reset</button>
+        	<input id="search_input" type="text" name='q' placeholder="Я ищу..." />
+        	<button id="search_button">Найти</button>
+        	<button id="quit_search">Отбой</button>
         </div>
         <div id="filters-bar">
         	<ul>
         		<li>
-        			<a href="#red">Red</a>
+        			<a href="#красный">красный</a>
         		</li>
         		<li>
-        			<a href="#blue">Blue</a>
+        			<a href="#синий">синий</a>
         		</li>
         		<li>
-        			<a href="#mobile">Mobile</a>
+        			<a href="#мобильный">мобильный</a>
         		</li>
         		<li>
-        			<a href="#accessory">Accessory</a>
+        			<a href="#аксессуар">аксессуар</a>
         		</li>
         	</ul>
         </div>
-
+		
+		<div id="bookmarks">
+			<div class="bookmark">
+				<h3>Плановые учения</h3>
+				<div class="descr">Акцент, по определению неизменяем. Модальность высказывания, как справедливо считает И.Гальперин, приводит словесный скрытый смысл, однако дальнейшее развитие приемов декодирования мы находим в работах академика В.Виноградова.</div>
+				<img src="http://yandex.ru/favicon.ico" alt="" /><a class="link" href="http://yandex.ru">http://yandex.ru</a>
+				<div class="time">10:45</div>
+				<div class="tags"><a href="#">акцент</a><a href="#">весна</a><a href="#">высказывания</a></div>
+			</div>
+		</div>
+		
        <div id="product-panel">
             <ul>
-                <li id="1" data-8088-keyword="red"><img src="img/1.jpg"><p>First Item</p></li>
-                <li id="2" data-8088-keyword="blue"><img src="img/2.jpg"><p>Second Item</p></li>
-                <li id="3" data-8088-keyword="mobile"><img src="img/3.jpg"><p>Third Item</p></li>
-                <li id="4" data-8088-keyword="accessory"><img src="img/4.jpg"><p>Fourth Item</p></li>
-                <li id="5" data-8088-keyword="red mobile"><img src="img/5.jpg"><p>Fifth Item</p></li>
-                <li id="6" data-8088-keyword="blue mobile"><img src="img/6.jpg"><p>Sixth Item</p></li>
-                <li id="7" data-8088-keyword="red accessory"><img src="img/7.jpg"><p>Seventh Item </p></li>
-                <li id="8" data-8088-keyword="blue accessory"><img src="img/8.jpg"><p>Eighth Item</p></li>
-                <li id="9" data-8088-keyword="red blue"><img src="img/9.jpg"><p>Ninth Item</p></li>
-                <li id="10" data-8088-keyword="mobile accessory"><img src="img/10.jpg"><p>Tenth Item</p></li>
+                <li id="1" data-8088-keyword="красный"><img src="img/1.jpg"><p>First Item</p></li>
+                <li id="2" data-8088-keyword="синий"><img src="img/2.jpg"><p>Second Item</p></li>
+                <li id="3" data-8088-keyword="мобильный"><img src="img/3.jpg"><p>Third Item</p></li>
+                <li id="4" data-8088-keyword="аксессуар"><img src="img/4.jpg"><p>Fourth Item</p></li>
+                <li id="5" data-8088-keyword="красный мобильный"><img src="img/5.jpg"><p>Fifth Item</p></li>
+                <li id="6" data-8088-keyword="синий мобильный"><img src="img/6.jpg"><p>Sixth Item</p></li>
+                <li id="7" data-8088-keyword="красный аксессуар"><img src="img/7.jpg"><p>Seventh Item </p></li>
+                <li id="8" data-8088-keyword="синий аксессуар"><img src="img/8.jpg"><p>Eighth Item</p></li>
+                <li id="9" data-8088-keyword="красный синий"><img src="img/9.jpg"><p>Ninth Item</p></li>
+                <li id="10" data-8088-keyword="мобильный аксессуар"><img src="img/10.jpg"><p>Tenth Item</p></li>
             </ul>
 
         </div>
         
         <div id="shopping-cart">
-            <ul>
-                
-            </ul> 
+            <ul></ul> 
         </div> 
+        
+        <div id="creator">
+        	<form id="create-form" name="form1" method="post" action="">
+			  <input type="text" name="header" id="header" placeholder="Заголовок" />
+			  <input type="text" name="url" id="url" placeholder="Ссылка" />
+			  <textarea name="descr" id="descr" placeholder="Описание"></textarea> 
+			  <input type="text" name="tags" id="tags" placeholder="Тэги" />
+			  <input type="submit" name="btn-submit" id="btn-submit" value="Создать" />
+			</form>
+        </div> 
+        
+        
 
 
 	<script data-main="js/app" src="js/vendors/require.js"></script>
