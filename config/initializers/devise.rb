@@ -3,7 +3,7 @@
 Devise.setup do |config|
 
   config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_SECRET']
-  config.omniauth :vkontakte, ENV['VK_APP_ID'], ENV['VK_SECRET']
+  config.omniauth :vkontakte, ENV['VK_APP_ID'], ENV['VK_SECRET'], :display => 'popup'
   # ==> Mailer Configuration
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
