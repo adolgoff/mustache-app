@@ -59,10 +59,12 @@ var Core = (function () {
         startAll : function () {
             var moduleID;
             for (moduleID in modules) {
+	            this.log(1, moduleID);
                 if (modules.hasOwnProperty(moduleID)) {
                     this.start(moduleID);
                 }
             }
+            this.log(1, "Start all modules");
         },
         
         
@@ -71,6 +73,7 @@ var Core = (function () {
             if (data = modules[moduleId] && data.instance) {
                 data.instance.destroy();
                 data.instance = null;
+                this.log(1, "Stop all modules");
             } else {
                 this.log(1, "Stop Module '" + moduleID + "': FAILED : module does not exist or has not been started");
             }
@@ -154,7 +157,7 @@ var Core = (function () {
                     }
                     jQuery(element).bind(evt, fn);
                 } else {
-                   that.log("Wrong arguments");
+                   this.log (1,"Wrong arguments");
                 }
             },
             
@@ -166,7 +169,7 @@ var Core = (function () {
                     }
                     jQuery(element).unbind(evt, fn);
                 } else {
-                   that.log("Wrong arguments");
+                   this.log (1, "Wrong arguments");
                 }
             },
             create: function (el) {
@@ -176,6 +179,8 @@ var Core = (function () {
                 jQuery(el).attr(attrs);             
             }
         },
+        
+        /* ==== U T I L S ====  */ 
         
         is_arr : function (arr) {
             return jQuery.isArray(arr);         
