@@ -1,0 +1,24 @@
+{{#bookmakrs}}
+<li class="bookmark">
+	<h3>{{header}}</h3>
+	<div class="descr">{{descr}}</div>
+	<img src="{{icon}}" alt="" />
+	<a class="link" href="{{link}}">{{link}}</a>
+	<div class="author">{{author}}</div>
+	<div class="time">{{time}}</div>
+	<div class="tags">
+		{{#tags}}<a href="#">{{tag}}</a>{{/tags}}
+	</div>
+</li>
+{{/bookmakrs}}
+
+<div id="li">
+	<ul id="list_locations">
+		{{#locations}}
+			<li class="listItem_location">
+				<img src="flags/{{country}}.png" class="flag_sm" />
+				{{label}}
+			</li>
+		{{/locations}}
+	</ul>
+</div>

@@ -24,7 +24,6 @@ Core.createModule("product-panel", function (sb) {
                 'reset-filter'  : this.reset,
                 'perform-search': this.search,
                 'quit-search'   : this.reset,
-                'creator-submit': this.createBookmark
             });
             eachProduct(function (product) {
                 sb.addEvent(product, 'click', that.addToCart);        
@@ -49,10 +48,6 @@ Core.createModule("product-panel", function (sb) {
             });
         },
         
-        createBookmark : function(data){
- 			console.log(data)       	
-        },
-
         search : function (query) {
             reset();
            query = query.toLowerCase();

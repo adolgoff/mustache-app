@@ -18,7 +18,7 @@ Core.createModule("filters-bar", function (sb) {
         filterProducts : function (e) {
             sb.notify({
                     type : 'change-filter',
-                    data : e.currentTarget.innerHTML
+                    data : (e.currentTarget.innerHTML == "все") ? "" : e.currentTarget.innerHTML
                 });
         }
     };
