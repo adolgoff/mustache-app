@@ -1,0 +1,187 @@
+body {
+	background: #ececec;
+	font: 13px/1.5 helvetica, arial, san-serif;
+}
+#main {
+	width: 950px;
+	margin: auto;
+	overflow: hidden;
+}
+#search-box {
+	width: 100%;
+	float: left;
+}
+#search_input, #quit_search, #search_button {
+	float: left;
+}
+
+#quit_search, #search_button {
+	font-size: 40px;
+	border: none;
+}
+#quit_search {
+	font-size: 30px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	width: 40px;
+	position: relative;
+	left: -55px;
+	top: 12px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+}
+#quit_search:hover {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+	filter: alpha(opacity=70);
+	-moz-opacity: 0.7;
+	-khtml-opacity: 0.7;
+	opacity: 0.7;
+}
+h1, #filters-bar {
+	clear: left;
+	margin-left: 10px;
+}
+#filters-bar ul {
+	list-style-type: none;
+	margin: 10px 0;
+	padding: 0;
+	border-top: 2px solid #474747;
+	border-bottom: 2px solid #474747;
+}
+#filters-bar li {
+	display: inline-block;
+	padding: 5px 10px 5px 0;
+}
+
+#filters-bar li a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #474747;
+}
+
+#product-panel {
+	float: left;
+	width: 588px;
+}
+#product-panel ul {
+	margin: 0;
+	padding: 0;
+}
+#product-panel li {
+	list-style-type: none;
+	display: inline-block;
+	text-align: center;
+	background: #474747;
+	border: 1px solid #eee;
+	padding: 15px;
+	margin: 10px;
+}
+#product-panel li p {
+	margin: 10px 0 0 0;
+}
+
+#shopping-cart {
+	float: left;
+	background: #ccc;
+	width: 300px;
+	padding: 30px;
+}
+
+#shopping-cart ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+#shopping-cart li {
+	padding: 3px;
+	margin: 2px 0;
+	background: #ececec;
+	border: 1px solid #333;
+}
+
+#shopping-cart .product_name {
+	display: inline-block;
+	width: 230px;
+}
+
+#shopping-cart .price {
+	display: inline-block;
+	float: right;
+}
+
+#creator {
+	margin-top: 10px;
+	padding: 10px 10px 5px 10px;
+	float: left;
+	background-color: #CCCCCC;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+form {
+
+}
+input[type="submit"] {
+	width: 340px;
+	background-color: #40b474;
+	text-shadow: 1px 1px 10px rgba(0,0,0, 0.3);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	color: white;
+	-webkit-transition: background-color 0.2s;
+	-moz-transition: background-color 0.2s;
+	-o-transition: background-color 0.2s;
+	-ms-transition: background-color 0.2s;
+}
+input[type="submit"]:hover {
+	box-shadow: 0px 2px 7px rgba(0,0,0,.3);
+	background-color: #208454;
+	transition: background-color 0.1s;
+	-webkit-transition: background-color 0.1s;
+	-moz-transition: background-color 0.1s;
+	-o-transition: background-color 0.1s;
+	-ms-transition: background-color 0.1s;
+}
+input[type="submit"]:active {
+	background-color: #000000;
+	transition: background-color 0.1s;
+	-webkit-transition: background-color 0s;
+	-moz-transition: background-color 0;
+	-o-transition: background-color 0;
+	-ms-transition: background-color 0;
+}
+input[type=submit][disabled=disabled],input[type=submit]:disabled,
+button:disabled {
+	background-color: #999999;
+	box-shadow: none;
+}
+input, textarea {
+	width: 320px;
+	display: block;
+	border: none;
+	font-size: 40px;
+	padding: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+textarea {
+	height: 100px;
+	resize: vertical;
+	font-size: 40px;
+}
+textarea:focus {
+	outline: none;
+	outline-offset: 0;
+	font-size: 20px;
+}
+input:focus {
+	outline: none;
+	outline-offset: 0;
+}
