@@ -1,6 +1,7 @@
 require([
 	// loading the core
 	'vendors/jquery',
+	'vendors/mustache.min',
 	'core-jquery',
 	'sandbox'],
 	
