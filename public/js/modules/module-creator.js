@@ -1,44 +1,46 @@
 Core.createModule("creator", function(sb) {
-	var header, url, descr, tags, button, self;
+	var header, url, descr, tags, button, self, form;
 
 	var isUrlValid = function(addr) {
 		var re = /(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
 		return addr.match(re);
 	}
 	
-	function onSended(){
+	function onSended(e){
 		sb.notify({
-			type : 'creator-submit',
-			data : {
-				header : this.header.value,
-				url : this.url.value,
-				descr : this.descr.value,
-				tags : this.tags.value
-			}
+			type : 'created-bookmark'
 		});
 	}
 	 
 	return {
 		init : function() {
 			self = this;
-			header = sb.find('#header');
-			url = sb.find('#url');
-			descr = sb.find('#descr');
-			tags = sb.find('#tags');
-			button = sb.find('#create-form')
+			form = sb.find();
+			header = sb.find('#header')[0];
+			url = sb.find('#url')[0];
+			descr = sb.find('#descr')[0];
+			tags = sb.find('#tags')[0];
+			button = sb.find('#btn-submit')[0]
+			button.disabled = true;
 			sb.addEvent(button, "click", this.submitCreator);
+			sb.addEvent(url, "change paste keyup", this.checkSubmitInfo);
 		},
 
 		destroy : function() {
+			sb.removeEvent(url, "change paste keyup", this.checkSubmitInfo);
 			sb.removeEvent(button, "click", this.submitCreator);
 			data = header = url = descr = tags = self = null;
+		},
+		
+		checkSubmitInfo : function(e){
+			var urlInvalid = !Boolean(isUrlValid(url.value));
+			button.disabled = urlInvalid;
 		},
 
 		submitCreator : function(e) {
 			e.preventDefault();
-			var tgt = e.target || e.srcElement;
-			var urlInvalid = !Boolean(isUrlValid(this.url.value));
-			if (tgt.id !== 'btn-submit' || header.value == "" || urlInvalid) {
+			var urlInvalid = !Boolean(isUrlValid(url.value));
+			if (urlInvalid) {
 				// dispatch error event to handle it from Alerter module
 				sb.notify({
 					type : 'input-error',
@@ -46,7 +48,18 @@ Core.createModule("creator", function(sb) {
 				});
 				return false;
 			} else {
-				
+				var addr = url.value;
+				addr = addr.indexOf("http") < 0 ? "http://" + addr : addr;
+				var addrArray = addr.split("/");
+				var data = {
+					header : header.value,
+					url : addrArray[0] + '//' + addrArray[2] + '/favicon.ico',
+					link : url.value,
+					descr : descr.value,
+					tags : tags.value
+				}
+				// send ajax post request to save a bookmark and listen to 'onSended' callback
+				sb.ajax('post', data, this.onSended);
 				return false;
 			}
 		},

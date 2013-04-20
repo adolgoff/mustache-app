@@ -10,8 +10,12 @@ Core.createModule("bookmark-panel", function (sb) {
     
     function reset () {
         eachBookmark(function (bookmark) {
-            bookmark.style.opacity = '1';        
+            bookmark.style.display = 'inline-block';        
         });
+    }
+    
+    function renderBookmarks(){
+    	var allBookmarks = sb.getData('bookmarks');
     }
 
     return {
@@ -24,7 +28,7 @@ Core.createModule("bookmark-panel", function (sb) {
                 'reset-filter'  : this.reset,
                 'perform-search': this.search,
                 'quit-search'   : this.reset,
-                'creator-submit': this.createBookmark
+                'created-bookmark': this.createBookmark
             });
             eachBookmark(function (bookmark) {
                 sb.addEvent(bookmark, 'click', that.addToCart);        
@@ -44,7 +48,7 @@ Core.createModule("bookmark-panel", function (sb) {
             reset();
             eachBookmark(function (bookmark) {
                 if (bookmark.getAttribute("data-8088-keyword").toLowerCase().indexOf(filter.toLowerCase()) < 0) {
-                    bookmark.style.opacity = '0.2';
+                    bookmark.style.display = 'none';
                 }
             });
         },
@@ -58,7 +62,7 @@ Core.createModule("bookmark-panel", function (sb) {
            query = query.toLowerCase();
             eachProduct(function (bookmark) {
                 if (bookmark.getElementsByTagName('p')[0].innerHTML.toLowerCase().indexOf(query) < 0) {
-                    bookmark.style.opacity = '0.2';
+                    bookmark.style.display = 'none';
                 }
             });
         }

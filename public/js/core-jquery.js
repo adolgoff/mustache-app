@@ -21,8 +21,10 @@ var Core = (function () {
     var modules = {},
     ajax_url = "",
     to_s = function (anything) { return Object.prototype.toString.call(anything); },
-    debug = true;
-	var self;
+    debug = true,
+    data;
+	self;
+	
     return {
         debug : function (on) {
             debug  = on ? true : false;
@@ -127,6 +129,10 @@ var Core = (function () {
             if (debug) {
                 console[ (severity === 1) ? 'log' : (severity === 2) ? 'warn' : 'error'](message);
             } 
+        },
+        
+        getData : function(){
+        	return this.data;
         },
         
         ajax : function(method, data, callback){

@@ -63,6 +63,10 @@ var Sandbox =  {
                 return el;
             },
 			
+			getData : function(){
+				return Core.getData();
+			},
+			
 			ajax : function(method, data, callback){
         		Core.ajax(method, data, callback);
 			}

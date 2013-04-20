@@ -10,10 +10,12 @@ Core.createModule("shopping-cart", function (sb) {
                 'add-item' : this.addItem        
             });
         },
+        
         destroy : function () {
             cart = cartItems = null;
             sb.ignore(['add-item']);
         },
+        
         addItem : function (product) {
             var entry; 
             entry = sb.find('#cart-' + product.id + ' .quantity')[0];

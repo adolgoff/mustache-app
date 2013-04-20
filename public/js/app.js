@@ -12,7 +12,8 @@ require([
 			'modules/module-product-panel', 
 			'modules/module-search-box', 
 			'modules/module-shopping-cart',
-			'modules/module-creator'
+			'modules/module-creator',
+			'modules/module-alerter'
 			],
 
 		// start the application

@@ -6,15 +6,19 @@ Core.createModule("alerter", function(sb) {
 		init : function() {
 			alerter = sb.find("#alerter");
 			sb.listen({
-                'input-error' 	: this.alertError
+                'input-error' 	: this.showAlert
             });
 		},
+		
 		destroy : function() {
-			sb.ignore(filters, "creator-submit", this.submitCreator);
+			sb.ignore(['input-error']);
 			alerter = null;
 		},
-		showAlert : function(){			
+		
+		showAlert : function(error){			
+			console.warn("Achtung: " + error);
 		},
+		
 		showPreloader : function(){}
 	}
 	
