@@ -10,7 +10,7 @@ Core.createModule("product-panel", function (sb) {
     
     function reset () {
         eachProduct(function (product) {
-            product.style.opacity = '1';        
+            product.style.display = 'inline-block';        
         });
     }
 
@@ -24,7 +24,6 @@ Core.createModule("product-panel", function (sb) {
                 'reset-filter'  : this.reset,
                 'perform-search': this.search,
                 'quit-search'   : this.reset,
-                'creator-submit': this.createBookmark
             });
             eachProduct(function (product) {
                 sb.addEvent(product, 'click', that.addToCart);        
@@ -44,21 +43,17 @@ Core.createModule("product-panel", function (sb) {
             reset();
             eachProduct(function (product) {
                 if (product.getAttribute("data-8088-keyword").toLowerCase().indexOf(filter.toLowerCase()) < 0) {
-                    product.style.opacity = '0.2';
+                    product.style.display = 'none';
                 }
             });
         },
         
-        createBookmark : function(data){
- 			console.log(data)       	
-        },
-
         search : function (query) {
             reset();
            query = query.toLowerCase();
             eachProduct(function (product) {
                 if (product.getElementsByTagName('p')[0].innerHTML.toLowerCase().indexOf(query) < 0) {
-                    product.style.opacity = '0.2';
+                    product.style.display = 'none';
                 }
             });
         },

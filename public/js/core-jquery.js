@@ -19,6 +19,7 @@
  */
 var Core = (function () {
     var modules = {},
+    ajax_url = "",
     to_s = function (anything) { return Object.prototype.toString.call(anything); },
     debug = true;
 	var self;
@@ -68,7 +69,7 @@ var Core = (function () {
         },
    
    
-       start : function (moduleID) {
+        start : function (moduleID) {
             var mod = modules[moduleID];
             if (mod) {
                 mod.instance = mod.create(Sandbox.create(this, moduleID));
@@ -128,6 +129,20 @@ var Core = (function () {
             } 
         },
         
+        ajax : function(method, data, callback){
+        	console.log (method, data, callback);
+        	return;
+        	// 
+        	var _data = data;
+        	jQuery.ajax({
+        		type: method.toLowerCase() == 'post' ? "POST" : "GET",
+			    url: this.ajax_url,
+			    dataType : "json",
+			    data : _data,
+			    complete: callback
+			});
+        },
+        
         dom : {
             query : function (selector, context) {
                 var ret = {}, that = this, jqEls, i = 0;
@@ -169,9 +184,11 @@ var Core = (function () {
                    self.log (1, "Wrong arguments");
                 }
             },
+            
             create: function (el) {
                 return document.createElement(el);        
             },
+            
             apply_attrs: function (el, attrs) {
                 jQuery(el).attr(attrs);             
             }

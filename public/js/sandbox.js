@@ -61,7 +61,11 @@ var Sandbox =  {
                     Core.dom.apply_attrs(el, config);
                 }
                 return el;
-            }
+            },
+			
+			ajax : function(method, data, callback){
+        		Core.ajax(method, data, callback);
+			}
         };
     }
 }
