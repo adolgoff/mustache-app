@@ -1,7 +1,6 @@
 require([
 	// loading the core
 	'vendors/jquery',
-	'vendors/mustache.min',
 	'core-jquery',
 	'sandbox'],
 	
@@ -13,7 +12,8 @@ require([
 			'modules/module-search-box', 
 			'modules/module-shopping-cart',
 			'modules/module-creator',
-			'modules/module-alerter'
+			'modules/module-alerter',
+			'modules/module-bookmark-panel' 
 			],
 
 		// start the application

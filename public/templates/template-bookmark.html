@@ -1,13 +1,13 @@
-{{#bookmakrs}}
+{{#bookmarks}}
 <li class="bookmark">
 	<h3>{{header}}</h3>
 	<div class="descr">{{descr}}</div>
 	<img src="{{icon}}" alt="" />
-	<a class="link" href="{{link}}">{{link}}</a>
+	<a class="link" href="{{{link}}}">{{link}}</a>
 	<div class="author">{{author}}</div>
 	<div class="time">{{time}}</div>
 	<div class="tags">
-		{{#tags}}<a href="#">{{tag}}</a>{{/tags}}
+		{{#tags}}<a href="#">{{.}}</a>{{/tags}}
 	</div>
 </li>
-{{/bookmakrs}}
+{{/bookmarks}}

@@ -6,12 +6,12 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: d1bkmpf52gg9u4
-  username: zyvppkuvqkpgbo
-  host: ec2-23-21-85-197.compute-1.amazonaws.com
+  database: dfhvvjca4a8snu
+  username: zqgjbuziekcccm
+  host: ec2-54-225-69-193.compute-1.amazonaws.com
   port: 5432
   pool: 10
-  password: 9O7d0zEAnrKiTm3d3QiBFVGlGt
+  password: W9KlCc91dASsvNTfxmLI0hFAVm
 
 
 # Warning: The database defined as "test" will be erased and

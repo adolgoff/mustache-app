@@ -1,5 +1,5 @@
 Core.createModule("bookmark-panel", function (sb) {
-    var bookmarks;
+    var bookmarks, templateLoaded;
 
     function eachBookmark(fn) {
         var i = 0, bookmark;
@@ -20,8 +20,7 @@ Core.createModule("bookmark-panel", function (sb) {
 
     return {
         init : function () {
-            var that = this;
-            
+            templateLoaded = false;
             bookmarks = sb.find("li");
             sb.listen({
                 'change-filter' : this.changeFilter,
@@ -33,6 +32,34 @@ Core.createModule("bookmark-panel", function (sb) {
             eachBookmark(function (bookmark) {
                 sb.addEvent(bookmark, 'click', that.addToCart);        
             });
+            
+            
+            // trying templating
+            
+            $(function(){
+ 
+				var tmpl, 	// Main template HTML
+				tdata = {}	// JSON data object that feeds the template
+			 
+				var initPage = function(){
+					$.get(
+						'templates/template-bookmark.html',
+						function(d){
+							tmpl = d
+							$.getJSON(
+								"data/data.json",
+								function(d){
+									$.extend(tdata,d);
+									console.log(Mustache.to_html(tmpl, tdata));//, tmpl, JSON.stringify(tdata), renderedPage);
+								}
+							)
+						}
+					)											
+				}()
+			})
+            
+            
+            
         },
         destroy : function () {
             var that = this;
