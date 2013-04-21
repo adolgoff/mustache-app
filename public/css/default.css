@@ -63,7 +63,7 @@ h1, #filters-bar {
 	color: #474747;
 }
 
-#product-panel {
+#product-panel, #bookmark-panel{
 	float: left;
 	width: 588px;
 }
@@ -71,7 +71,7 @@ h1, #filters-bar {
 	margin: 0;
 	padding: 0;
 }
-#product-panel li {
+#product-panel li, #bookmark-panel li {
 	list-style-type: none;
 	display: inline-block;
 	text-align: center;

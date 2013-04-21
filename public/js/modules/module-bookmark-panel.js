@@ -1,5 +1,5 @@
 Core.createModule("bookmark-panel", function (sb) {
-    var bookmarks, templateLoaded;
+    var self, bookmarks, panelElement, templateLoaded, bookmarksData, bookmarksLoaded;
 
     function eachBookmark(fn) {
         var i = 0, bookmark;
@@ -18,10 +18,52 @@ Core.createModule("bookmark-panel", function (sb) {
     	var allBookmarks = sb.getData('bookmarks');
     }
 
+	function getTemplate(){
+		$.get('/templates/template-bookmark.html', function(templateData){
+			templateLoaded = templateData;
+			if (bookmarksLoaded) renderBookmarks('from templates');
+		});
+		// sb.ajax('/templates/template-bookmark.html', 'get', {}, function(templateData){
+			// console.log(templateData);
+			// templateLoaded = templateData;
+			// if (bookmarksLoaded) renderBookmarks();
+		// });
+	}
+	
+	function getBookmarks(){
+		$.get('/data/data.json', function(bookmarksData){
+			bookmarksLoaded = bookmarksData;
+			if (templateLoaded) renderBookmarks();
+		});
+		// sb
+		// var requestParams = {}; 
+		// sb.ajax('/data/data.json', 'get', requestParams, function(bookmarksData){
+			// console.log(bookmarksData);
+			// bookmarksLoaded = bookmarksData;
+			// if (templateLoaded){
+				// renderBookmarks();
+			// } 
+		// });
+	}
+	
+	function renderBookmarks(consLog){
+		console.log('renderBookmarks ' + consLog);
+		console.log(bookmarksLoaded);
+		additionHtml = Mustache.to_html(templateLoaded, bookmarksLoaded);
+		//console.log(additionHtml);
+		//console.log(panelElement)
+		panelElement.innerHTML += additionHtml;
+		sb.extend(bookmarksData, bookmarksLoaded);
+		bookmarks = sb.find.call(panelElement, "li");
+		console.log(bookmarks);
+		bookmarksLoaded = null;
+	}
+	
     return {
         init : function () {
-            templateLoaded = false;
-            bookmarks = sb.find("li");
+        	self = this, templateLoaded = false, bookmarksData = {};
+        	panelElement = sb.find()[0];
+//             
             sb.listen({
                 'change-filter' : this.changeFilter,
                 'reset-filter'  : this.reset,
@@ -29,44 +71,17 @@ Core.createModule("bookmark-panel", function (sb) {
                 'quit-search'   : this.reset,
                 'created-bookmark': this.createBookmark
             });
-            eachBookmark(function (bookmark) {
-                sb.addEvent(bookmark, 'click', that.addToCart);        
-            });
+//             
+            getTemplate();
+            getBookmarks();
             
-            
-            // trying templating
-            
-            $(function(){
- 
-				var tmpl, 	// Main template HTML
-				tdata = {}	// JSON data object that feeds the template
-			 
-				var initPage = function(){
-					$.get(
-						'templates/template-bookmark.html',
-						function(d){
-							tmpl = d
-							$.getJSON(
-								"data/data.json",
-								function(d){
-									$.extend(tdata,d);
-									console.log(Mustache.to_html(tmpl, tdata));//, tmpl, JSON.stringify(tdata), renderedPage);
-								}
-							)
-						}
-					)											
-				}()
-			})
-            
-            
-            
+            //sb.addEvent(panelElement, 'click', self.addToCart);        
         },
+        
         destroy : function () {
-            var that = this;
-            eachBookmark(function (bookmark) {
-                sb.removeEvent(bookmark, 'click', that.addToCart);        
-            });
+            sb.removeEvent(panelElement, 'click', self.addToCart);        
             sb.ignore(['change-filter', 'reset-filter', 'perform-search', 'quit-search']);
+            self = bookmarks = panelElement = templateLoaded = bookmarksLoaded = false
         },
         
         reset : reset,

@@ -6,8 +6,35 @@
             "icon": "http://lenta.ru/favicon.ico",
             "link": "http://lenta.ru/news/2013/04/20/ask/",
             "author": "Alex Dolgov",
-            "time": "Manchester",
-            "tags": "city, manchester, lol"
+            "time": "10:25",
+            "tags": ["city", "manchester", "lol"]
+        },
+        {
+            "header": "Manchester Заголовок 2",
+            "descr": "Manchester описание",
+            "icon": "http://lenta.ru/favicon.ico",
+            "link": "http://lenta.ru/news/2013/04/20/ask/",
+            "author": "Alex Dolgov",
+            "time": "10:11",
+            "tags": ["city", "manchester", "lol"]
+        },
+        {
+            "header": "Manchester Заголовок 3",
+            "descr": "Manchester описание",
+            "icon": "http://lenta.ru/favicon.ico",
+            "link": "http://lenta.ru/news/2013/04/20/ask/",
+            "author": "Alex Dolgov",
+            "time": "8:14",
+            "tags": ["city", "manchester", "lol"]
+        },
+        {
+            "header": "Manchester Заголовок 4",
+            "descr": "Manchester описание",
+            "icon": "http://lenta.ru/favicon.ico",
+            "link": "http://lenta.ru/news/2013/04/20/ask/",
+            "author": "Alex Dolgov",
+            "time": "8:01",
+            "tags": ["city", "manchester", "lol"]
         }
     ]
 }

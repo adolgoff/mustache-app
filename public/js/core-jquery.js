@@ -135,12 +135,13 @@ var Core = (function () {
         	return this.data;
         },
         
-        ajax : function(method, data, callback){
-        	console.log (method, data, callback);
-        	return;
+        ajax : function(url, method, data, callback){
+        	console.log (url, method, data, callback);
+        	// return;
         	// 
         	var _data = data;
         	jQuery.ajax({
+        		url : url,
         		type: method.toLowerCase() == 'post' ? "POST" : "GET",
 			    url: this.ajax_url,
 			    dataType : "json",
@@ -208,6 +209,11 @@ var Core = (function () {
         
         is_obj : function (obj) {
             return jQuery.isPlainObject(obj);         
+        },
+        
+        extend : function(){
+        	var arg = arguments; 
+        	return jQuery.extend(arg);
         }
     };
 
