@@ -49,7 +49,6 @@ Core.createModule("alerter", function(sb) {
 		},
 		
 		hidePreloader : function(){
-			
 		}
 		
 	

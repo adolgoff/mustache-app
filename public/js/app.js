@@ -20,5 +20,4 @@ require([
 	}
 );
 
-
 //TODO: Make rails service to get new Bookmarks
