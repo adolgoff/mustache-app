@@ -217,6 +217,33 @@ input:focus {
 	outline-offset: 0;
 }
 
+/* =====================  A L E R T E R   ==================== */
+
+#alerter{
+  z-index: 9; position: absolute; width:100%; height:100%; text-align: center;
+  display: none;
+}
+#alerter-back{
+	position: fixed; width:100%; height:100%; background: rgba(0,0,0, .7); 
+}
+#keepcalmkeeper{
+	position: fixed;
+	left:50%;
+	top:50%;
+}
+#keepcalm {
+	z-index:10;
+	position: relative;
+	top:-275px;
+	left: -350px;
+	background: transparent url("../img/keepcalm.jpg") center;
+	width: 700px; height: 550px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 20px rgba(0,0,0,1);	
+}
+
 /* ======================  F O O T E R  ====================== */
 
 footer {

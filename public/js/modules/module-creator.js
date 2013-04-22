@@ -40,7 +40,7 @@ Core.createModule("creator", function(sb) {
 		submitCreator : function(e) {
 			e.preventDefault();
 			var urlInvalid = !Boolean(isUrlValid(url.value));
-			if (urlInvalid) {
+			if (urlInvalid || header.value == "") {
 				// dispatching error event to handle it from Alerter module
 				sb.notify({
 					type : 'input-error',

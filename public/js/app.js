@@ -21,5 +21,4 @@ require([
 );
 
 
-//TODO: Make Alerter module to handle errors 
 //TODO: Make rails service to get new Bookmarks
