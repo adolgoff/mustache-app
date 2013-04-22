@@ -18,19 +18,30 @@ body {
 	box-shadow: 0 0 20px rgba(0,0,0,.1);
 }
 
+/* =================== H E A D E R   L O G O   =================== */
+
+a#logo{
+	display: block; float: left;
+	background: transparent url('../img/logo.gif') no-repeat center;
+	width: 151px; height:145px;
+}
+
 /* =================== H E A D E R   S E A R C H   P A N E L  =================== */
 header {
 	background-color: #3f4944; padding: 20px 0px 20px; float: left; width: 100%;
 }
 
 #search-box {
-	width: 560px;
-	float: left;
+	margin-right: -40px;
+	padding-top:35px;
+	width: 630px;
+	float: right;
 }
 #search_input, #btn-quit, #btn-search {
 	float: left;
 }
 #search_input{
+	width:400px;
 	box-shadow:inset 2px 0px 10px rgba(0,0,0,0.15);
 	-moz-box-shadow:inset 2px 0px 10px rgba(0,0,0,0.15);
 }
