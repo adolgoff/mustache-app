@@ -33,7 +33,9 @@ a#logo{
 
 /* =================== H E A D E R   S E A R C H   P A N E L  =================== */
 header {
-	background-color: #3f4944; padding: 20px 0px 20px; float: left; width: 100%;
+	background: #3f4944 url("../img/head-background.jpg");
+	padding: 20px 0px 20px; float: left; width: 100%;
+	box-shadow: 0 10px 10px rgba(0,0,0,.1);
 }
 
 #search-box {
@@ -98,9 +100,14 @@ header {
 }
 
 #bookmark-panel li h3 {
-	font-size: 30px;
+    color: #636365;
+	font-size: 40px;
+	text-shadow: 1px 1px 1px rgb(256,256,256);
 }
 
+#bookmark-panel .descr {
+	font-size: 12px;
+}
 #bookmark-panel li img {
 	position: relative;
 	top: 4px;
@@ -109,6 +116,12 @@ header {
 #bookmark-panel li .link {
 	color: rgb(104, 75, 13);
 	font-size: 11px;
+}
+#bookmark-panel .author{
+	margin-top: 6px;
+}
+#bookmark-panel .author,#bookmark-panel .time{
+	color: #636365; display: block;
 }
 
 #bookmark-panel li .tags a {
