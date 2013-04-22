@@ -5,21 +5,20 @@ Core.createModule("filters-bar", function (sb) {
     	
         init : function () {
             filters = sb.find('a');
-            sb.addEvent(filters, "click", this.filterProducts);
+            sb.addEvent(filters, "click", this.filterBookmarks);
         }, 
         
         
         destroy : function () {
-            sb.removeEvent(filters, "click", this.filterProducts);
+            sb.removeEvent(filters, "click", this.filterBookmarks);
             filter = null;
         },
         
-        
-        filterProducts : function (e) {
+        filterBookmarks : function (e) {
             sb.notify({
-                    type : 'change-filter',
-                    data : (e.currentTarget.innerHTML == "все") ? "" : e.currentTarget.innerHTML
-                });
+                type : 'change-filter',
+                data : (e.currentTarget.innerHTML == "все") ? "" : e.currentTarget.innerHTML
+            });
         }
     };
 });

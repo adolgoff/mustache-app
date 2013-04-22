@@ -7,27 +7,23 @@
     <link rel="stylesheet" href="css/default.css" />
 </head>
 <body>
-    <div id="main">
+	<header>
+		<div class="inner">
         <div id="search-box">
+        	<form id="search-form" name="search-form" method="post">
         	<input id="search_input" type="text" name='q' placeholder="Я ищу..." />
-        	<button id="quit_search">X</button>
-        	<button id="search_button">Найти</button>
+        	<input id="btn-search"name="btn-search" type="submit" value="Найти" />
+        	<button id="btn-quit">X</button>
+        	</form>
         </div>
-        <div id="filters-bar">
-        	<ul>
-        		<li><a href="#">все</a></li>
-        		<li><a href="#красный">красный</a></li>
-        		<li><a href="#синий">синий</a></li>
-        		<li><a href="#мобильный">мобильный</a></li>
-        		<li><a href="#аксессуар">аксессуар</a></li>
-        	</ul>
         </div>
-		  
+	</header>	  
+<section id="main" class="inner">
 		<ul id="bookmark-panel">
 		</ul>
         
         <div id="creator">
-        	<form id="create-form" name="form1" method="post" action="">
+        	<form id="create-form" name="create-form" method="post">
 			  <input type="text" name="header" id="header" placeholder="Заголовок" />
 			  <input type="text" name="url" id="url" placeholder="Ссылка" />
 			  <textarea name="descr" id="descr" placeholder="Описание"></textarea> 
@@ -35,10 +31,15 @@
 			  <input type="submit" name="btn-submit" id="btn-submit" value="Создать" />
 			</form>
         </div> 
+</section>
 
+<footer>
+	<div class="inner">
+	<p>	2013, copyright</p>
+	</div>
+</footer>
 
 	<script src="js/vendors/mustache.js"></script>
 	<script data-main="js/app" src="js/vendors/require.js"></script>
-    </div>
 </body>
 </html>

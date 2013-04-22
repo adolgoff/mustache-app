@@ -15,7 +15,7 @@ Core.createModule("bookmark-panel", function (sb) {
     
     function reset () {
         eachBookmark(function (bookmark) {
-            bookmark.style.display = 'inline-block';        
+            bookmark.style.display = 'block';        
         });
     }
     
@@ -62,12 +62,12 @@ Core.createModule("bookmark-panel", function (sb) {
             getTemplate();
             getBookmarks();
             
-            sb.addEvent(panelElement, 'click', self.addToCart);        
+            sb.addEvent(panelElement, 'click', self.filterBookmarks);        
         },
         
         destroy : function () {
-            sb.removeEvent(panelElement, 'click', self.addToCart);        
-            sb.ignore(['change-filter', 'reset-filter', 'perform-search', 'quit-search']);
+            sb.removeEvent(panelElement, 'click', self.filterBookmarks);        
+            sb.ignore(['change-filter', 'reset-filter', 'perform-search', 'quit-search', 'created-bookmark']);
             self = bookmarks = panelElement = templateLoaded = bookmarksLoaded = false
         },
         
@@ -75,25 +75,42 @@ Core.createModule("bookmark-panel", function (sb) {
         
         changeFilter : function (filter) {
             reset();
-            eachBookmark(function (bookmark) {
-                if (bookmark.getAttribute("data-8088-keyword").toLowerCase().indexOf(filter.toLowerCase()) < 0) {
-                    bookmark.style.display = 'none';
+            var tagFilter = '<a href="#' + filter + '">' + filter + '</a>' 
+            var el;
+            eachBookmark(function (bm) {
+            	el = bm.getElementsByClassName("tags")[0];
+                if (el.innerHTML.toLowerCase().indexOf(tagFilter.toLowerCase()) < 0) {
+                    bm.style.display = 'none';
                 }
             });
         },
-        
+       
+        // TODO: Adding new bookmark to panel 
         createBookmark : function(data){
  			console.log(data)       	
         },
 
         search : function (query) {
             reset();
-           query = query.toLowerCase();
-            eachProduct(function (bookmark) {
-                if (bookmark.getElementsByTagName('p')[0].innerHTML.toLowerCase().indexOf(query) < 0) {
-                    bookmark.style.display = 'none';
+            query = query.toLowerCase();
+            console.log("Searching: " + query);
+            eachBookmark(function (bm) {
+                if (bm.innerHTML.toLowerCase().indexOf(query) < 0) {
+                    bm.style.display = 'none';
                 }
             });
+        },
+        
+        filterBookmarks : function (e) {
+        	var tgt =  e.target || e.srcElement;
+        	if (tgt.parentNode.className === "tags"){
+	            sb.notify({
+	                type : 'change-filter',
+	                data : tgt.innerHTML
+	            });
+           	}
         }
+        
+        
     };
 });

@@ -4,19 +4,23 @@ Core.createModule("search-box", function(sb) {
     return {
         init : function () {
             input = sb.find("#search_input")[0],
-            button = sb.find("#search_button")[0],
-            reset  = sb.find("#quit_search")[0];
+            button = sb.find("#btn-search")[0],
+            reset  = sb.find("#btn-quit")[0];
             
             sb.addEvent(button, "click", this.handleSearch);
             sb.addEvent(reset, "click", this.quitSearch);
-
+            
+            console.log(button);
         },
+        
         destroy : function () {
             sb.removeEvent(button, "click", this.handleSearch);
             sb.removeEvent(button, "click", this.quitSearch);
             input = button = reset = null;
         },
-        handleSearch : function () {
+        
+        handleSearch : function (e) {
+        	e.preventDefault();
             var query = input.value;
             if (query) {
                 sb.notify({
@@ -25,7 +29,9 @@ Core.createModule("search-box", function(sb) {
                 });
             }
         },
-        quitSearch : function () {
+        quitSearch : function (e) {
+        	e.preventDefault();
+        	history.pushState ? history.pushState("", document.title, window.location.pathname + window.location.search) : loc.hash = "";
             input.value = "";
             sb.notify({
                 type : 'quit-search',

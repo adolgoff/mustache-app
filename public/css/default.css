@@ -1,117 +1,101 @@
 body {
-	background: #ececec;
-	font: 13px/1.5 helvetica, arial, san-serif;
+	background: #e4e3d5;;
+	font: 62.5%/1.5 "OpenSansRegular",Helvetica,Arial,sans-serif, arial, san-serif;
 }
+
+.inner {
+	margin: 0 auto;
+	max-width: 960px;
+	padding: 0 50px;
+}
+
 #main {
-	width: 950px;
+	width: 960px;
 	margin: auto;
 	overflow: hidden;
 }
-#search-box {
-	width: 100%;
-	float: left;
-}
-#search_input, #quit_search, #search_button {
-	float: left;
+
+/* =================== H E A D E R   S E A R C H   P A N E L  =================== */
+header {
+	background-color: #3f4944; padding: 20px 0px 20px; float: left; width: 100%;
 }
 
-#quit_search, #search_button {
+#search-box {
+	width: 560px;
+	float: left;
+}
+#search_input, #btn-quit, #btn-search {
+	float: left;
+}
+#search_input{
+	box-shadow:inset 2px 0px 10px rgba(0,0,0,0.15);
+	-moz-box-shadow:inset 2px 0px 10px rgba(0,0,0,0.15);
+}
+#btn-quit, #btn-search {
 	font-size: 40px;
 	border: none;
 }
-#quit_search {
+#btn-search{float:right; width:200px}
+#btn-quit {
 	font-size: 30px;
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
 	border-radius: 20px;
 	width: 40px;
-	position: relative;
-	left: -55px;
-	top: 12px;
+	position: absolute;
+	margin-left:-55px;
+	margin-top: 15px;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
 	filter: alpha(opacity=50);
 	-moz-opacity: 0.5;
 	-khtml-opacity: 0.5;
 	opacity: 0.5;
 }
-#quit_search:hover {
+#btn-quit:hover {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
 	filter: alpha(opacity=70);
 	-moz-opacity: 0.7;
 	-khtml-opacity: 0.7;
 	opacity: 0.7;
 }
-h1, #filters-bar {
-	clear: left;
-	margin-left: 10px;
-}
-#filters-bar ul {
-	list-style-type: none;
-	margin: 10px 0;
-	padding: 0;
-	border-top: 2px solid #474747;
-	border-bottom: 2px solid #474747;
-}
-#filters-bar li {
-	display: inline-block;
-	padding: 5px 10px 5px 0;
-}
 
-#filters-bar li a {
-	text-decoration: none;
-	font-weight: bold;
-	color: #474747;
-}
+/* =================== B O O K M A R K S   P A N E L  =================== */
 
-#product-panel, #bookmark-panel{
+#bookmark-panel {
 	float: left;
 	width: 588px;
+	min-height: 50px;
 }
-#product-panel ul {
-	margin: 0;
-	padding: 0;
-}
-#product-panel li, #bookmark-panel li {
+
+#bookmark-panel li {
 	list-style-type: none;
+	display: block;
+	margin: 10px 40px 20px 0px;
+}
+
+#bookmark-panel li h3 {
+	font-size: 30px;
+}
+
+#bookmark-panel li img {
+	position: relative;
+	top: 4px;
+}
+
+#bookmark-panel li .link {
+	color: rgb(104, 75, 13);
+	font-size: 11px;
+}
+
+#bookmark-panel li .tags a {
 	display: inline-block;
-	text-align: center;
-	background: #474747;
-	border: 1px solid #eee;
-	padding: 15px;
-	margin: 10px;
-}
-#product-panel li p {
-	margin: 10px 0 0 0;
+	margin-right: 3px;
+	color: white;
+	background-color: #525789;
+	padding: 0 3px;
 }
 
-#shopping-cart {
-	float: left;
-	background: #ccc;
-	width: 300px;
-	padding: 30px;
-}
-
-#shopping-cart ul {
-	list-style-type: none;
-	padding: 0;
-}
-
-#shopping-cart li {
-	padding: 3px;
-	margin: 2px 0;
-	background: #ececec;
-	border: 1px solid #333;
-}
-
-#shopping-cart .product_name {
-	display: inline-block;
-	width: 230px;
-}
-
-#shopping-cart .price {
-	display: inline-block;
-	float: right;
-}
+/* =================== C R E A T O R   P A N E L  =================== */
 
 #creator {
 	margin-top: 10px;
@@ -122,9 +106,11 @@ h1, #filters-bar {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
-form {
 
+form {
+	display:block;
 }
+
 input[type="submit"] {
 	width: 340px;
 	background-color: #40b474;
@@ -155,11 +141,12 @@ input[type="submit"]:active {
 	-o-transition: background-color 0;
 	-ms-transition: background-color 0;
 }
-input[type=submit][disabled=disabled],input[type=submit]:disabled,
-button:disabled {
-	background-color: #999999;
+input[type=submit][disabled=disabled], input[type=submit]:disabled, button:disabled {
+	background-color: #BDBDBD;
 	box-shadow: none;
+	text-shadow: none;
 }
+
 input, textarea {
 	width: 320px;
 	display: block;
@@ -185,3 +172,14 @@ input:focus {
 	outline: none;
 	outline-offset: 0;
 }
+
+/* ======================  F O O T E R  ====================== */
+
+footer {
+	color: #bfbeb2;
+	clear: both;
+	background-color: #3f4944;
+	height: 60px;
+	padding: 30px;
+}
+

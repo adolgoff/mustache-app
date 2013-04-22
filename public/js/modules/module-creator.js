@@ -41,12 +41,11 @@ Core.createModule("creator", function(sb) {
 			e.preventDefault();
 			var urlInvalid = !Boolean(isUrlValid(url.value));
 			if (urlInvalid) {
-				// dispatch error event to handle it from Alerter module
+				// dispatching error event to handle it from Alerter module
 				sb.notify({
 					type : 'input-error',
 					data : "Check your text fields"
 				});
-				return false;
 			} else {
 				var addr = url.value;
 				addr = addr.indexOf("http") < 0 ? "http://" + addr : addr;
@@ -59,9 +58,10 @@ Core.createModule("creator", function(sb) {
 					tags : tags.value
 				}
 				// send ajax post request to save a bookmark and listen to 'onSended' callback
-				sb.ajax('post', data, this.onSended);
-				return false;
+				//_url, method, data, callback
+				sb.ajax('/', 'post', data, this.onSended);
 			}
+			return false;
 		},
 
 		hide : function() {
