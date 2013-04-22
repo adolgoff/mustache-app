@@ -1,6 +1,6 @@
 require([
 	// loading the core
-	'vendors/jquery',
+	'vendors/jquery-1.9.1',
 	'core-jquery',
 	'sandbox'],
 	

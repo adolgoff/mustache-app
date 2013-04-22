@@ -135,18 +135,14 @@ var Core = (function () {
         	return this.data;
         },
         
-        ajax : function(url, method, data, callback){
-        	console.log (url, method, data, callback);
-        	// return;
-        	// 
+        ajax : function(_url, method, data, callback){
         	var _data = data;
         	jQuery.ajax({
-        		url : url,
+        		url : _url,
         		type: method.toLowerCase() == 'post' ? "POST" : "GET",
-			    url: this.ajax_url,
-			    dataType : "json",
-			    data : _data,
-			    complete: callback
+				success: function(callbackData){
+					callback(callbackData);
+				}
 			});
         },
         
