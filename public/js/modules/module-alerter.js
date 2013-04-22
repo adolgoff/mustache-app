@@ -19,7 +19,14 @@ Core.createModule("alerter", function(sb) {
 			console.warn("Achtung: " + error);
 		},
 		
-		showPreloader : function(){}
+		showPreloader : function(){
+			
+		},
+		
+		hideAlert: function(){
+			
+		}
+		
 	}
 	
 });

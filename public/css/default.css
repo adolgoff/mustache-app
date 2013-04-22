@@ -1,7 +1,7 @@
 body {
 	/* background: #e4e3d5; */
 	background: #e4e3d5 url("../img/mustaches-back.jpg");
-	font: 62.5%/1.5 "OpenSansRegular",Helvetica,Arial,sans-serif, arial, san-serif;
+	font: 62.5%/1.5 'Lucida Grande', "OpenSansRegular",Helvetica,Arial,sans-serif, arial, san-serif;
 }
 
 .inner {
@@ -11,6 +11,8 @@ body {
 }
 
 #main {
+	padding-top: 20px;
+	padding-bottom: 20px;
 	width: 960px;
 	margin: auto;
 	overflow: hidden;
@@ -22,8 +24,11 @@ body {
 
 a#logo{
 	display: block; float: left;
-	background: transparent url('../img/logo.gif') no-repeat center;
-	width: 151px; height:145px;
+	background: transparent url('../img/logo1.png') no-repeat center;
+	width: 223px; height:200px;
+	position: absolute;
+	top:0px;
+	
 }
 
 /* =================== H E A D E R   S E A R C H   P A N E L  =================== */
@@ -33,7 +38,7 @@ header {
 
 #search-box {
 	margin-right: -40px;
-	padding-top:35px;
+	padding: 35px 0;
 	width: 630px;
 	float: right;
 }
@@ -73,6 +78,10 @@ header {
 	-khtml-opacity: 0.7;
 	opacity: 0.7;
 }
+
+/* ====================  A L E R T E R    P A N E L  =================== */
+
+
 
 /* =================== B O O K M A R K S   P A N E L  =================== */
 

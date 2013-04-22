@@ -9,13 +9,12 @@ Core.createModule("search-box", function(sb) {
             
             sb.addEvent(button, "click", this.handleSearch);
             sb.addEvent(reset, "click", this.quitSearch);
-            
             console.log(button);
         },
         
         destroy : function () {
             sb.removeEvent(button, "click", this.handleSearch);
-            sb.removeEvent(button, "click", this.quitSearch);
+            sb.removeEvent(reset, "click", this.quitSearch);
             input = button = reset = null;
         },
         
