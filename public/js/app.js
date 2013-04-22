@@ -21,6 +21,5 @@ require([
 );
 
 
-//TODO: Handle escape key on forms
 //TODO: Make Alerter module to handle errors 
-//TODO: Make rails service to get new Bookmark
+//TODO: Make rails service to get new Bookmarks
