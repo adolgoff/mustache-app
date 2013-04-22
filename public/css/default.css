@@ -1,5 +1,6 @@
 body {
-	background: #e4e3d5;
+	/* background: #e4e3d5; */
+	background: #e4e3d5 url("../img/mustaches-back.jpg");
 	font: 62.5%/1.5 "OpenSansRegular",Helvetica,Arial,sans-serif, arial, san-serif;
 }
 
@@ -13,6 +14,8 @@ body {
 	width: 960px;
 	margin: auto;
 	overflow: hidden;
+	background-color: rgba(247,247,239, .8);
+	box-shadow: 0 0 20px rgba(0,0,0,.1);
 }
 
 /* =================== H E A D E R   S E A R C H   P A N E L  =================== */
@@ -64,14 +67,14 @@ header {
 
 #bookmark-panel {
 	float: left;
-	width: 588px;
+	width: 640px;
 	min-height: 50px;
 }
 
 #bookmark-panel li {
 	list-style-type: none;
 	display: block;
-	margin: 10px 40px 20px 0px;
+	margin: 10px 60px 20px 0px;
 }
 
 #bookmark-panel li h3 {
@@ -99,7 +102,7 @@ header {
 /* =================== C R E A T O R   P A N E L  =================== */
 
 #creator {
-	margin-top: 10px;
+	margin: 10px -50px 0 0;
 	padding: 10px 10px 5px 10px;
 	float: left;
 	background-color: #CCCCCC;
