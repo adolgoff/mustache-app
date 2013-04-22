@@ -1,6 +1,6 @@
 body {
 	/* background: #e4e3d5; */
-	background: #e4e3d5 url("../img/mustaches-back.jpg");
+	background: #e4e3d5 url("../img/mustaches-back.jpg") 55%;
 	font: 62.5%/1.5 'Lucida Grande', "OpenSansRegular",Helvetica,Arial,sans-serif, arial, san-serif;
 }
 
@@ -33,7 +33,7 @@ a#logo{
 
 /* =================== H E A D E R   S E A R C H   P A N E L  =================== */
 header {
-	background: #3f4944 url("../img/head-background.jpg") center;
+	background: #3f4944 url("../img/head-background.jpg") 40%;
 	padding: 20px 0px 20px; float: left; width: 100%;
 	box-shadow: 0 10px 10px rgba(0,0,0,.1);
 }
