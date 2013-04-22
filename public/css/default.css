@@ -102,7 +102,9 @@ header {
 #bookmark-panel li h3 {
     color: #636365;
 	font-size: 40px;
+	line-height: 1em;
 	text-shadow: 1px 1px 1px rgb(256,256,256);
+	margin-bottom: 18px;
 }
 
 #bookmark-panel .descr {
@@ -130,6 +132,11 @@ header {
 	color: white;
 	background-color: #525789;
 	padding: 0 3px;
+}
+#bookmark-panel li .sharer {
+	height: 30px;
+	width:100%;
+	background: transparent url("../img/underline.gif") no-repeat top;
 }
 
 /* =================== C R E A T O R   P A N E L  =================== */
