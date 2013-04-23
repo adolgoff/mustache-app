@@ -57,6 +57,10 @@ var Core = (function () {
                     self.start(moduleID);
                 }
             }
+            jQuery(document).ajaxSend(function(e, xhr, options) {
+			 var token = $("meta[name='csrf-token']").attr("content");
+			  xhr.setRequestHeader("X-CSRF-Token", token);
+			});
             self.log(1, "Start all modules");
         },
         
@@ -136,10 +140,15 @@ var Core = (function () {
         },
         
         ajax : function(_url, method, data, callback){
+        	if (method.toLowerCase() == "post"){
+        		console.log("Senging:");
+        		console.log(data);
+        	}
         	var _data = data;
         	jQuery.ajax({
         		url : _url,
         		type: method.toLowerCase() == 'post' ? "POST" : "GET",
+        		data:_data,
 				success: function(callbackData){
 					callback(callbackData);
 				}

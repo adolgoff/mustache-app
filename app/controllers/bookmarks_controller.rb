@@ -3,7 +3,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks.json
   def index
     @bookmarks = Bookmark.all
-
+    # render json: @bookmarks
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @bookmarks }
@@ -26,6 +26,7 @@ class BookmarksController < ApplicationController
   def new
     @bookmark = Bookmark.new
     @bookmark.user = current_user
+    @bookmark.save
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @bookmark }
@@ -41,7 +42,7 @@ class BookmarksController < ApplicationController
   # POST /bookmarks.json
   def create
     @bookmark = Bookmark.new(params[:bookmark])
-
+    @bookmark.user = current_user
     respond_to do |format|
       if @bookmark.save
         format.html { redirect_to @bookmark, notice: 'Bookmark was successfully created.' }

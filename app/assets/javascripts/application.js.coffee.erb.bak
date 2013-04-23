@@ -1,0 +1,54 @@
+
+$("#check").click (e) ->
+  e.preventDefault()
+  FB.getLoginStatus (response) ->
+    if response.status is "connected"
+      $.get "<%=Rails.application.routes.url_helpers.send(:user_omniauth_callback_path, :facebook)%>", (json) ->
+        console.log json
+
+
+jQuery ->
+  $('body').prepend('<div id="fb-root"></div>')
+	
+  $.ajax
+    url: "//connect.facebook.net/en_US/all.js"
+    dataType: 'script'
+    cache: true
+
+  setTimeout (->
+  el = document.createElement("script")
+  el.type = "text/javascript"
+  el.src = "//vk.com/js/api/openapi.js?3"
+  el.async = true
+  document.getElementById("vk_api_transport").appendChild el
+  ), 0
+
+window.fbAsyncInit = ->
+  FB.init(appId: <%= ENV['FB_APP_ID'] %>, cookie: true)
+
+  $('#fb-connect').click (e) ->
+    e.preventDefault()
+    FB.login (response) ->
+      $.get '<%=Rails.application.routes.url_helpers.send(:user_omniauth_callback_path, :facebook)%>', (json) ->
+       console.log(json) 
+    false
+
+#
+window.vkAsyncInit = ->
+  VK.init(apiId: <%= ENV['VK_APP_ID'] %>);
+
+	
+  $('#vk-connect').click (e) ->
+    e.preventDefault()
+    VK.Auth.login (response) ->
+      console.log(response)
+      $.get '<%=Rails.application.routes.url_helpers.send(:user_omniauth_callback_path, :vkontakte)%>', (json) ->
+        console.log(json) 
+ 	    # $.get '<%=Rails.application.routes.url_helpers.send(:user_omniauth_authorize_path, :vkontakte)%>', (json) ->
+        # $.get '<%=Rails.application.routes.url_helpers.send(:user_omniauth_callback_path, :vkontakte)%>', (json) ->
+    false
+
+  $('#sign_out').click (e) ->
+    VK.getLoginStatus (response) ->
+      VK.logout() if response.authResponse
+    true 

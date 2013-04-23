@@ -1,6 +1,5 @@
 body {
-	/* background: #e4e3d5; */
-	background: #e4e3d5 url("../img/mustaches-back.jpg") 55%;
+	background-color: #3f4944;
 	font: 62.5%/1.5 'Lucida Grande', "OpenSansRegular",Helvetica,Arial,sans-serif, arial, san-serif;
 }
 
@@ -11,11 +10,19 @@ body {
 }
 
 #main {
+	background:#e4e3d5 url("../img/mustaches-back.jpg") 55%;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	width: 960px;
+	width: 100%;
 	margin: auto;
 	overflow: hidden;
+}
+
+#main .inner .content{
+	width: 960px;
+	margin: -20px 0;
+	padding: 40px;
+	float:left;
 	background-color: rgba(247,247,239, .8);
 	box-shadow: 0 0 20px rgba(0,0,0,.1);
 }
@@ -88,7 +95,7 @@ header {
 
 #bookmark-panel {
 	float: left;
-	width: 640px;
+	width: 600px;
 	min-height: 50px;
 }
 
@@ -249,8 +256,11 @@ input:focus {
 footer {
 	color: #bfbeb2;
 	clear: both;
-	background-color: #3f4944;
 	height: 60px;
 	padding: 30px;
+}
+
+footer .inner {
+	padding: 0 240px;
 }
 

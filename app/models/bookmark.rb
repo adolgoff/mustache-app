@@ -1,4 +1,5 @@
 class Bookmark < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :descr, :header, :icon, :tags, :user, :timestamps
+  attr_accessible :descr, :link, :header, :icon, :tags, :user, :timestamps
+  validates_presence_of :user
 end

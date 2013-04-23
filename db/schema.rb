@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 2) do
 
   create_table "bookmarks", :force => true do |t|
     t.string   "header"
+    t.string   "link"
     t.text     "descr"
     t.string   "icon"
     t.integer  "user_id"

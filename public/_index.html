@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mustaches stories</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/default.css" />
+</head>
+<body>
+	<div id="alerter">
+		<div id="alerter-back">&nbsp;</div>
+		<div id="keepcalmkeeper"><div id="keepcalm">&nbsp;</div></div>
+	</div>
+	<header>
+		<div class="inner">
+		<a href="/" id="logo"></a>
+        <div id="search-box">
+        	<form id="search-form" name="search-form" method="post">
+        	<input id="search_input" type="text" name='q' placeholder="Я ищу..." />
+        	<input id="btn-search"name="btn-search" type="submit" value="Найти" />
+        	<button id="btn-quit">X</button>
+        	</form>
+        </div>
+        </div>
+	</header>	  
+<section id="main">
+	<div class="inner">
+		<div class="content">
+			
+		<ul id="bookmark-panel">
+		</ul>
+        
+        <div id="creator">
+        	<form id="create-form" name="create-form" method="post">
+			  <input type="text" name="header" id="header" placeholder="Заголовок" />
+			  <input type="text" name="url" id="url" placeholder="Ссылка" />
+			  <textarea name="descr" id="descr" placeholder="Описание"></textarea> 
+			  <input type="text" name="tags" id="tags" placeholder="Тэги" />
+			  <input type="submit" name="btn-submit" id="btn-submit" value="Создать" />
+			</form>
+        </div>
+         
+       </div>
+   </div>
+</section>
+
+<footer>
+	<div class="inner">
+	<p>	2013, copyright</p>
+	</div>
+</footer>
+
+	<script src="js/vendors/mustache.js"></script>
+	<script data-main="js/app" src="js/vendors/require.js"></script>
+</body>
+</html>

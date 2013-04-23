@@ -7,6 +7,7 @@ Core.createModule("creator", function(sb) {
 	}
 	
 	function onSended(e){
+		console.log(e);
 		sb.notify({
 			type : 'created-bookmark'
 		});
@@ -50,16 +51,17 @@ Core.createModule("creator", function(sb) {
 				var addr = url.value;
 				addr = addr.indexOf("http") < 0 ? "http://" + addr : addr;
 				var addrArray = addr.split("/");
-				var data = {
+				var data = {bookmark : {
 					header : header.value,
-					url : addrArray[0] + '//' + addrArray[2] + '/favicon.ico',
+					icon : addrArray[0] + '//' + addrArray[2] + '/favicon.ico',
 					link : url.value,
 					descr : descr.value,
 					tags : tags.value
+					}
 				}
 				// send ajax post request to save a bookmark and listen to 'onSended' callback
 				//_url, method, data, callback
-				sb.ajax('/', 'post', data, this.onSended);
+				sb.ajax('/bookmarks.json', 'post', data, onSended);
 			}
 			return false;
 		},

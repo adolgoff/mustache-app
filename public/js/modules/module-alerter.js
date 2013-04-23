@@ -23,7 +23,6 @@ Core.createModule("alerter", function(sb) {
 			sb.listen({
                 'input-error' : this.showAlert
             });
-            console.log(alerter);
 		},
 		
 		destroy : function() {
