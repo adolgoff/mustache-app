@@ -21,9 +21,7 @@ var Core = (function () {
     var modules = {},
     ajax_url = "",
     to_s = function (anything) { return Object.prototype.toString.call(anything); },
-    debug = true,
-    data;
-	that;
+    debug = true, data, that;
 	
     return {
         debug : function (on) {
