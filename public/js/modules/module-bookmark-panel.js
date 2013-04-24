@@ -3,7 +3,7 @@ Core.createModule("bookmark-panel", function (sb) {
     templateLoaded, bookmarksLoaded, bookmarksData,
     config = {
 		templateUrl: "/templates/template-bookmark.html",
-		dataUrl: "/data/data.json"
+		dataUrl: "/bookmarks.json"
 	}
 	
     function eachBookmark(fn) {
@@ -33,14 +33,22 @@ Core.createModule("bookmark-panel", function (sb) {
 	function getBookmarks(){
 		var requestParams = {}; 
 		sb.ajax(config.dataUrl, 'get', requestParams, function(bookmarksData){
-			bookmarksLoaded = bookmarksData;
-			if (templateLoaded) renderBookmarks();
+			bookmarksLoaded = bookmarksData; //.reverse();
+			if (templateLoaded) {
+				renderBookmarks();
+			}
 		});
 	}
 	
-	function renderBookmarks(consLog){
-		additionHtml = Mustache.to_html(templateLoaded, bookmarksLoaded);
-		panelElement.innerHTML += additionHtml;
+	function renderBookmarks(){
+		var loadedItem, additionalHtml;
+		for (var i = 0; i < bookmarksLoaded.length; i++){
+			loadedItem = bookmarksLoaded[i];
+			if (loadedItem['tags'] == "") delete loadedItem.tags;
+			else loadedItem['tags'] = loadedItem['tags'].split(',');
+			additionalHtml = Mustache.to_html(templateLoaded,loadedItem) 
+			panelElement.insertAdjacentHTML('afterbegin', additionalHtml);
+		}
 		sb.extend(bookmarksData, bookmarksLoaded);
 		bookmarks = sb.find.call(panelElement, "li");
 		bookmarksLoaded = null;
@@ -58,7 +66,7 @@ Core.createModule("bookmark-panel", function (sb) {
                 'quit-search'   : this.reset,
                 'created-bookmark': this.createBookmark
             });
-			//             
+			       
             getTemplate();
             getBookmarks();
             
@@ -85,9 +93,9 @@ Core.createModule("bookmark-panel", function (sb) {
             });
         },
        
-        // TODO: Adding new bookmark to panel 
         createBookmark : function(data){
- 			console.log(data)       	
+ 			bookmarksLoaded = [data];
+ 			renderBookmarks();       	
         },
 
         search : function (query) {

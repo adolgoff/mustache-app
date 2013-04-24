@@ -7,6 +7,7 @@ require([
 	// loading modules
 	function() {
 		require([
+			'vendors/jquery-ujs',
 			'modules/module-search-box', 
 			'modules/module-creator',
 			'modules/module-alerter',

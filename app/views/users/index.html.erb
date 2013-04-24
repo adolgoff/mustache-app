@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/default.css" />
     <link rel="shortcut icon" href="/favicon.ico">
+    <%= csrf_meta_tags %>
 </head>
 <body>
 	<div id="alerter">
@@ -15,6 +16,12 @@
 	<header>
 		<div class="inner">
 		<a href="/" id="logo"></a>
+		<div id="login-box">
+			<% if current_user %>
+				<%= link_to "#{current_user.username}", current_user.url %>
+				<%= link_to "(Выйти)", destroy_user_session_path, :method => :delete %>
+			<% end %>
+		</div>
         <div id="search-box">
         	<form id="search-form" name="search-form" method="post">
         	<input id="search_input" type="text" name='q' placeholder="Я ищу..." />
@@ -31,8 +38,14 @@
 		<ul id="bookmark-panel">
 		</ul>
         
-        <div id="creator">
+        <div id="entrance" class="<%= current_user ? 'hidden' : '' %>">
+			<a href="<%= user_omniauth_authorize_path(:facebook) %>" id="btn-fb">Войти через Facebook</a>
+			<a href="<%= user_omniauth_authorize_path(:vkontakte) %>" id="btn-vk">Войти через Вконтакте</a>
+        </div>
+        
+        <div id="creator" class="<%= !current_user ? 'hidden' : '' %>">
         	<form id="create-form" name="create-form" method="post">
+        	  <label>Добавляй!</label>
 			  <input type="text" name="header" id="header" placeholder="Заголовок" />
 			  <input type="text" name="url" id="url" placeholder="Ссылка" />
 			  <textarea name="descr" id="descr" placeholder="Описание"></textarea> 

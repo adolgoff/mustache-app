@@ -9,6 +9,10 @@ body {
 	padding: 0 50px;
 }
 
+.hidden{
+	display: none;
+}
+
 #main {
 	background:#e4e3d5 url("../img/mustaches-back.jpg") 55%;
 	padding-top: 20px;
@@ -35,7 +39,15 @@ a#logo{
 	width: 223px; height:200px;
 	position: absolute;
 	top:0px;
-	
+}
+
+#login-box {
+	position: absolute;
+	padding-left: 370px;
+}
+#login-box a{
+	color:white;
+	font-size: 16px;
 }
 
 /* =================== H E A D E R   S E A R C H   P A N E L  =================== */
@@ -105,7 +117,8 @@ header {
 	margin: 10px 60px 20px 0px;
 }
 
-#bookmark-panel li h3 {
+#bookmark-panel li h3, label {
+	display: block;
     color: #636365;
 	font-size: 40px;
 	line-height: 1em;
@@ -146,9 +159,9 @@ header {
 	background: transparent url("../img/underline.gif") no-repeat top;
 }
 
-/* =================== C R E A T O R   P A N E L  =================== */
+/* ============== C R E A T O R   &   E N T R A N C E   P A N E L S ============== */
 
-#creator {
+#creator, #entrance {
 	margin: 10px -50px 0 0;
 	padding: 10px 10px 5px 10px;
 	float: left;
@@ -158,11 +171,30 @@ header {
 	border-radius: 5px;
 }
 
+#creator label{
+	text-align:center;
+	padding: 10px 10px 0 10px;
+}
+
+#entrance a {
+	text-decoration:none;
+	text-align:center;
+	font-size: 20px;
+	border: none;
+	padding: 10px 0;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+
+
 form {
 	display:block;
 }
 
-input[type="submit"] {
+input[type="submit"], #entrance a {
+	display: block;
 	width: 340px;
 	background-color: #40b474;
 	text-shadow: 1px 1px 10px rgba(0,0,0, 0.7);
@@ -175,7 +207,7 @@ input[type="submit"] {
 	-o-transition: background-color 0.2s;
 	-ms-transition: background-color 0.2s;
 }
-input[type="submit"]:hover {
+input[type="submit"]:hover,  #entrance a:hover {
 	box-shadow: 0px 2px 7px rgba(0,0,0,.7);
 	background-color: #208454;
 	transition: background-color 0.1s;
@@ -184,7 +216,7 @@ input[type="submit"]:hover {
 	-o-transition: background-color 0.1s;
 	-ms-transition: background-color 0.1s;
 }
-input[type="submit"]:active {
+input[type="submit"]:active,  #entrance a:active {
 	background-color: #000000;
 	transition: background-color 0.1s;
 	-webkit-transition: background-color 0s;
@@ -212,7 +244,7 @@ input, textarea {
 textarea {
 	height: 100px;
 	resize: vertical;
-	font-size: 40px;
+	font-size: 20px;
 }
 textarea:focus {
 	outline: none;

@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks
   # GET /bookmarks.json
   def index
-    @bookmarks = Bookmark.all
+    @bookmarks = Bookmark.last(30)
     # render json: @bookmarks
     respond_to do |format|
       format.html # index.html.erb
@@ -43,6 +43,8 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = Bookmark.new(params[:bookmark])
     @bookmark.user = current_user
+    # @bookmark.tags = @bookmark.tags.to_s
+    # = '["' + @bookmark.tags.split(/,/).join('","').to_s + '"]'
     respond_to do |format|
       if @bookmark.save
         format.html { redirect_to @bookmark, notice: 'Bookmark was successfully created.' }
