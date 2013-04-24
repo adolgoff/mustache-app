@@ -40,10 +40,10 @@ var Core = (function () {
                         instance : null
                     };
                 } else {
-                    self.consolelog(1, "Module '" + moduleID + "' Registration : FAILED : instance has no init or destory functions");
+                    //self.consolelog(1, "Module '" + moduleID + "' Registration : FAILED : instance has no init or destory functions");
                 }
             } else {
-                self.consolelog(1, "Module '" + moduleID + "' Registration : FAILED : one or more arguments are of incorrect type");
+                //self.consolelog(1, "Module '" + moduleID + "' Registration : FAILED : one or more arguments are of incorrect type");
             }
         },
         
@@ -52,7 +52,7 @@ var Core = (function () {
             self = this;
             var moduleID;
             for (moduleID in modules) {
-	            self.consolelog(1, moduleID);
+	            //self.consolelog(1, moduleID);
                 if (modules.hasOwnProperty(moduleID)) {
                     self.start(moduleID);
                 }
@@ -61,7 +61,7 @@ var Core = (function () {
 			 var token = $("meta[name='csrf-token']").attr("content");
 			  xhr.setRequestHeader("X-CSRF-Token", token);
 			});
-            self.consolelog(1, "Start all modules");
+           // self.consolelog(1, "Start all modules");
         },
         
    
@@ -89,9 +89,9 @@ var Core = (function () {
             if (data = modules[moduleId] && data.instance) {
                 data.instance.destroy();
                 data.instance = null;
-                self.consolelog(1, "Stop all modules");
+               // self.consolelog(1, "Stop all modules");
             } else {
-                self.consolelog(1, "Stop Module '" + moduleID + "': FAILED : module does not exist or has not been started");
+               // self.consolelog(1, "Stop Module '" + moduleID + "': FAILED : module does not exist or has not been started");
             }
         },
         
@@ -101,10 +101,10 @@ var Core = (function () {
                 if (modules[mod]) {
                     modules[mod].events = evts;
                 } else {
-                    self.consolelog(1, "");
+                  //  self.consolelog(1, "");
                 }
             } else {
-                self.consolelog(1, "");
+                //self.consolelog(1, "");
             }
         },
         
@@ -131,7 +131,7 @@ var Core = (function () {
         
         consolelog : function (severity, message) {
             if (debug && console) {
-              	console[ (severity === 1) ? 'consolelog' : (severity === 2) ? 'warn' : 'error'](message);
+              	//console[ (severity === 1) ? 'consolelog' : (severity === 2) ? 'warn' : 'error'](message);
             } 
         },
         
@@ -177,7 +177,7 @@ var Core = (function () {
                     }
                     jQuery(element).bind(evt, fn);
                 } else {
-                   self.consolelog (1,"Wrong arguments");
+                   //self.consolelog (1,"Wrong arguments");
                 }
             },
             
@@ -189,7 +189,7 @@ var Core = (function () {
                     }
                     jQuery(element).unbind(evt, fn);
                 } else {
-                   self.consolelog (1, "Wrong arguments");
+                  // self.consolelog (1, "Wrong arguments");
                 }
             },
             
