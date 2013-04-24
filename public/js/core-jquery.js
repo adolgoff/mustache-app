@@ -14,7 +14,7 @@
  * 6. registerEvents							//
  * 7. triggerEvent								// working with events, adding 
  * 8. removeEvents								// removinf and firing them
- * 9. log 										//
+ * 9. consolelog 										//
  * 10. dom methods: query, bind, unbind, create, apply_attrs(el, attrs)
  */
 var Core = (function () {
@@ -40,10 +40,10 @@ var Core = (function () {
                         instance : null
                     };
                 } else {
-                    self.log(1, "Module '" + moduleID + "' Registration : FAILED : instance has no init or destory functions");
+                    self.consolelog(1, "Module '" + moduleID + "' Registration : FAILED : instance has no init or destory functions");
                 }
             } else {
-                self.log(1, "Module '" + moduleID + "' Registration : FAILED : one or more arguments are of incorrect type");
+                self.consolelog(1, "Module '" + moduleID + "' Registration : FAILED : one or more arguments are of incorrect type");
             }
         },
         
@@ -52,7 +52,7 @@ var Core = (function () {
             self = this;
             var moduleID;
             for (moduleID in modules) {
-	            self.log(1, moduleID);
+	            self.consolelog(1, moduleID);
                 if (modules.hasOwnProperty(moduleID)) {
                     self.start(moduleID);
                 }
@@ -61,7 +61,7 @@ var Core = (function () {
 			 var token = $("meta[name='csrf-token']").attr("content");
 			  xhr.setRequestHeader("X-CSRF-Token", token);
 			});
-            self.log(1, "Start all modules");
+            self.consolelog(1, "Start all modules");
         },
         
    
@@ -89,9 +89,9 @@ var Core = (function () {
             if (data = modules[moduleId] && data.instance) {
                 data.instance.destroy();
                 data.instance = null;
-                self.log(1, "Stop all modules");
+                self.consolelog(1, "Stop all modules");
             } else {
-                self.log(1, "Stop Module '" + moduleID + "': FAILED : module does not exist or has not been started");
+                self.consolelog(1, "Stop Module '" + moduleID + "': FAILED : module does not exist or has not been started");
             }
         },
         
@@ -101,10 +101,10 @@ var Core = (function () {
                 if (modules[mod]) {
                     modules[mod].events = evts;
                 } else {
-                    self.log(1, "");
+                    self.consolelog(1, "");
                 }
             } else {
-                self.log(1, "");
+                self.consolelog(1, "");
             }
         },
         
@@ -129,9 +129,9 @@ var Core = (function () {
         },
         
         
-        log : function (severity, message) {
+        consolelog : function (severity, message) {
             if (debug && console) {
-              	console[ (severity === 1) ? 'log' : (severity === 2) ? 'warn' : 'error'](message);
+              	console[ (severity === 1) ? 'consolelog' : (severity === 2) ? 'warn' : 'error'](message);
             } 
         },
         
@@ -177,7 +177,7 @@ var Core = (function () {
                     }
                     jQuery(element).bind(evt, fn);
                 } else {
-                   self.log (1,"Wrong arguments");
+                   self.consolelog (1,"Wrong arguments");
                 }
             },
             
@@ -189,7 +189,7 @@ var Core = (function () {
                     }
                     jQuery(element).unbind(evt, fn);
                 } else {
-                   self.log (1, "Wrong arguments");
+                   self.consolelog (1, "Wrong arguments");
                 }
             },
             
