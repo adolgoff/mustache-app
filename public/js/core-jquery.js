@@ -23,7 +23,7 @@ var Core = (function () {
     to_s = function (anything) { return Object.prototype.toString.call(anything); },
     debug = true,
     data;
-	self;
+	that;
 	
     return {
         debug : function (on) {
@@ -40,28 +40,28 @@ var Core = (function () {
                         instance : null
                     };
                 } else {
-                    //self.consolelog(1, "Module '" + moduleID + "' Registration : FAILED : instance has no init or destory functions");
+                    that.consolelog(1, "Module '" + moduleID + "' Registration : FAILED : instance has no init or destory functions");
                 }
             } else {
-                //self.consolelog(1, "Module '" + moduleID + "' Registration : FAILED : one or more arguments are of incorrect type");
+                that.consolelog(1, "Module '" + moduleID + "' Registration : FAILED : one or more arguments are of incorrect type");
             }
         },
         
         
         init : function () {
-            self = this;
+            that = this;
             var moduleID;
             for (moduleID in modules) {
-	            //self.consolelog(1, moduleID);
+	            that.consolelog(1, moduleID);
                 if (modules.hasOwnProperty(moduleID)) {
-                    self.start(moduleID);
+                    that.start(moduleID);
                 }
             }
             jQuery(document).ajaxSend(function(e, xhr, options) {
 			 var token = $("meta[name='csrf-token']").attr("content");
 			  xhr.setRequestHeader("X-CSRF-Token", token);
 			});
-           // self.consolelog(1, "Start all modules");
+            that.consolelog(1, "Start all modules");
         },
         
    
@@ -69,7 +69,7 @@ var Core = (function () {
             var moduleID;
             for (moduleID in modules) {
                 if (modules.hasOwnProperty(moduleID)) {
-                    self.stop(moduleID);
+                    that.stop(moduleID);
                 }
             }
         },
@@ -89,9 +89,9 @@ var Core = (function () {
             if (data = modules[moduleId] && data.instance) {
                 data.instance.destroy();
                 data.instance = null;
-               // self.consolelog(1, "Stop all modules");
+               // that.consolelog(1, "Stop all modules");
             } else {
-               // self.consolelog(1, "Stop Module '" + moduleID + "': FAILED : module does not exist or has not been started");
+               // that.consolelog(1, "Stop Module '" + moduleID + "': FAILED : module does not exist or has not been started");
             }
         },
         
@@ -101,10 +101,10 @@ var Core = (function () {
                 if (modules[mod]) {
                     modules[mod].events = evts;
                 } else {
-                  //  self.consolelog(1, "");
+                  //  that.consolelog(1, "");
                 }
             } else {
-                //self.consolelog(1, "");
+                //that.consolelog(1, "");
             }
         },
         
@@ -123,7 +123,7 @@ var Core = (function () {
         
         
         removeEvents : function (evts, mod) {
-            if (self.is_obj(evts) && mod && (mod = modules[mod]) && mod.events) {
+            if (that.is_obj(evts) && mod && (mod = modules[mod]) && mod.events) {
                 delete mod.events;
             } 
         },
@@ -177,7 +177,7 @@ var Core = (function () {
                     }
                     jQuery(element).bind(evt, fn);
                 } else {
-                   //self.consolelog (1,"Wrong arguments");
+                   //that.consolelog (1,"Wrong arguments");
                 }
             },
             
@@ -189,7 +189,7 @@ var Core = (function () {
                     }
                     jQuery(element).unbind(evt, fn);
                 } else {
-                  // self.consolelog (1, "Wrong arguments");
+                  // that.consolelog (1, "Wrong arguments");
                 }
             },
             
