@@ -130,8 +130,8 @@ var Core = (function () {
         
         
         log : function (severity, message) {
-            if (debug) {
-                console[ (severity === 1) ? 'log' : (severity === 2) ? 'warn' : 'error'](message);
+            if (debug && console) {
+              	console[ (severity === 1) ? 'log' : (severity === 2) ? 'warn' : 'error'](message);
             } 
         },
         
@@ -140,10 +140,6 @@ var Core = (function () {
         },
         
         ajax : function(_url, method, data, callback){
-        	if (method.toLowerCase() == "post"){
-        		console.log("Senging:");
-        		console.log(data);
-        	}
         	var _data = data;
         	jQuery.ajax({
         		url : _url,
